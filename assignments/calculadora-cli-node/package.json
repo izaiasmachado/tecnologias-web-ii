@@ -1,0 +1,14 @@
+{
+  "name": "calculadora-cli-node",
+  "version": "1.0.0",
+  "description": "Calculadora CLI - Tec. Web II",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Izaias Machado",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
