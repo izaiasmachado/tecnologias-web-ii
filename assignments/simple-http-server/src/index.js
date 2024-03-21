@@ -27,19 +27,41 @@ const getPublicFileContent = (file) => {
   return fileContent;
 };
 
+const getMimeType = (filename) => {
+  const fileExtension = filename.split(".")[1];
+  const mimeType = {
+    html: "text/html",
+    css: "text/css",
+    js: "text/javascript",
+  };
+
+  if (mimeType[fileExtension]) {
+    return mimeType[fileExtension];
+  }
+
+  return "text/plain";
+};
+
+const writeFileResponse = (res, file) => {
+  const mimeType = getMimeType(file);
+  const fileContent = getFileContent(file);
+
+  if (!fileContent) {
+    res.writeHead(404, { "Content-Type": "text/html" });
+    return res.end("404 Not Found");
+  }
+
+  res.writeHead(200, { "Content-Type": mimeType });
+  return res.end(fileContent);
+};
+
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
-    const fileContent = getFileContent("index.html");
-    return res.end(fileContent);
+    return writeFileResponse(res, "index.html");
   }
 
   const possibleFileNames = req.url.split("/")[1];
-  const publicFileContent = getPublicFileContent(possibleFileNames);
-  console.log(possibleFileNames);
-  if (publicFileContent) return res.end(publicFileContent);
-
-  res.statusCode = 404;
-  return res.end("404 Not Found");
+  return writeFileResponse(res, possibleFileNames);
 });
 
 server.listen(port, () => {
