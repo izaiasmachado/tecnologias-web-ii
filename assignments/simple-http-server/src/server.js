@@ -3,9 +3,8 @@ const path = require("path");
 const http = require("http");
 const port = process.env.PORT || 4000;
 
-const publicFolder = path.join(__dirname, "..", "public");
-
-const getFileContent = (file) => {
+const getPublicFileContent = (file) => {
+  const publicFolder = path.join(__dirname, "..", "public");
   const filePath = path.join(publicFolder, file);
 
   if (!fs.existsSync(filePath)) {
@@ -13,17 +12,6 @@ const getFileContent = (file) => {
   }
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  return fileContent;
-};
-
-const getPublicFileContent = (file) => {
-  const publicFiles = fs.readdirSync(publicFolder);
-
-  if (!publicFiles.includes(file)) {
-    return null;
-  }
-
-  const fileContent = getFileContent(file);
   return fileContent;
 };
 
@@ -44,7 +32,7 @@ const getMimeType = (filename) => {
 
 const writeFileResponse = (res, file) => {
   const mimeType = getMimeType(file);
-  const fileContent = getFileContent(file);
+  const fileContent = getPublicFileContent(file);
 
   if (!fileContent) {
     res.writeHead(404, { "Content-Type": "text/html" });
