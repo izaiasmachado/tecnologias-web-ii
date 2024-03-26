@@ -1,3 +1,9 @@
+// Disciplina      : ECO0103 - Tecnologias Web II
+// Professor       : Thiago Iachiley
+// Descrição       : Laboratório 02 - Servidor web simples com Node.js HTTP
+// Autor(a)        : Izaias Machado Pessoa Neto
+// Data de Entrega : 02/04/2024
+
 const fs = require("fs");
 const path = require("path");
 const http = require("http");
