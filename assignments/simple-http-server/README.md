@@ -32,11 +32,13 @@ PORT=3000 node src/server.js
 
 ## Árvore de Arquivos
 
-Os arquivos do projeto foram organizados da seguinte forma. Note que os arquivos da pasta `public` são arquivos estáticos que o usuário pode solicitar. Além disso, a pasta `src` armazena os arquivos do lado do servidor da aplicação. Já os arquivos `package-lock` e `package` são do gerenciador de pacotes NPM.
+Os arquivos do projeto foram organizados da seguinte forma. Note que os arquivos da pasta `public` são arquivos estáticos que o usuário pode solicitar. Além disso, a pasta `src` armazena os arquivos do lado do servidor da aplicação. Já os arquivos `package-lock` e `package` são do gerenciador de pacotes NPM. Por fim, o [relatório de documentação deste projeto](./docs/relatorio.pdf) é um arquivo PDF dentro da pasta `docs`.
 
 ```
 .
 ├── README.md
+├── docs
+│   └── relatorio.pdf
 ├── package-lock.json
 ├── package.json
 ├── public
